@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,12 +52,15 @@
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.6;
             }
+
             90% {
                 opacity: 0.6;
             }
+
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
@@ -70,7 +74,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -79,8 +83,15 @@
         }
 
         @keyframes grid-pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
         }
 
         /* Header */
@@ -179,8 +190,17 @@
         }
 
         @keyframes pulse-glow {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.8;
+            }
         }
 
         .policy-hero h1 {
@@ -237,6 +257,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -387,6 +408,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="particles"></div>
     <div class="grid-overlay"></div>
@@ -411,59 +433,66 @@
 
         <div class="policy-content">
             <div class="policy-section">
-                <h2>🛡️ Giriş</h2>
+                <h2>Giriş</h2>
                 <p>
-                    Capar Studio olarak, kullanıcılarımızın gizliliğini korumak temel değerlerimiz arasındadır. 
-                    Bu gizlilik politikası, uygulamalarımızı kullandığınızda kişisel bilgilerinizin nasıl 
+                    Capar Studio olarak, kullanıcılarımızın gizliliğini korumak temel değerlerimiz arasındadır.
+                    Bu gizlilik politikası, uygulamalarımızı kullandığınızda kişisel bilgilerinizin nasıl
                     toplandığını, kullanıldığını ve korunduğunu açıklamaktadır.
                 </p>
             </div>
 
             <div class="policy-section">
                 <h2>Toplanan Bilgiler</h2>
-                
-                <p>Coreline uygulaması, hiçbir kişisel verinizi (ad, e-posta, konum, cihaz bilgisi, internet geçmişi vb.) toplamaz, saklamaz, üçüncü taraflarla paylaşmaz. 
-                    Uygulama kapsamında sadece kullanıcıların spor aktiviteleriyle ilgili vücut bilgileri (örneğin: boy, kilo, yaş gibi) cihaz üzerinde geçici olarak kullanılmak üzere alınır. 
-                    Bu bilgiler: Kişiselleştirilmiş antrenman önerileri oluşturmak, Egzersiz planlarının daha verimli hale gelmesini sağlamak amacıyla kullanılır.
-                    Bu bilgiler yalnızca cihazınızda, uygulamanın geçici belleğinde (cache) tutulur ve hiçbir şekilde dış bir sunucuya gönderilmez.</p>
+
+                <p>Wordy English, kullanıcı adı, profil resmi veya kişisel kimlik bilgileri gibi hiçbir kişisel veri
+                    toplamaz.
+                    Uygulamada eklediğiniz kelimeler ve öğrenme verileri yalnızca cihazınızdaki SQLite veritabanında
+                    saklanır.
+                </p>
             </div>
 
             <div class="policy-section">
                 <h2>Veri Paylaşımı</h2>
-                <p>Capar Studio, Coreline uygulaması üzerinden herhangi bir kullanıcı verisini:
+                <p>Capar Studio, Wordy English uygulaması üzerinden herhangi bir kullanıcı verisini:
 
                     Üçüncü taraflarla paylaşmaz,
-                    Satmaz, Reklam veya analiz platformlarına iletmez. Uygulama internete bağlı olmasa da tüm işlevlerini yerine getirebilecek şekilde tasarlanmıştır.
-                    </p>
+                    Satmaz, Reklam veya analiz platformlarına iletmez. Uygulama internete bağlı olmasa da tüm
+                    işlevlerini yerine getirebilecek şekilde tasarlanmıştır.
+                    Uygulama, kaydedilen kelimeleri yalnızca sizin öğrenme süreciniz için kullanır.
+                </p>
             </div>
 
             <div class="policy-section">
                 <h2> Veri Güvenliği</h2>
                 <p>
-                    Veriler yalnızca cihazınızda tutulduğu için, bilgilerin güvenliği büyük ölçüde cihazınızın güvenlik seviyesine bağlıdır. Capar Studio, kullanıcıların cihazlarındaki verilerin kötü amaçlı uygulamalar veya kişiler tarafından erişilmesini engellemek adına:
-Uygulama içerisinde verileri dışa açacak herhangi bir API veya bağlantı bulundurmaz.
-Verilerin şifrelenmesini gerektirecek bir sunucu altyapısı kullanmaz çünkü veriler hiçbir yere gönderilmez.
+                    Veriler yalnızca cihazınızda tutulduğu için, bilgilerin güvenliği büyük ölçüde cihazınızın güvenlik
+                    seviyesine bağlıdır. Capar Studio, kullanıcıların cihazlarındaki verilerin kötü amaçlı uygulamalar
+                    veya kişiler tarafından erişilmesini engellemek adına:
+                    Uygulama içerisinde verileri dışa açacak herhangi bir API veya bağlantı bulundurmaz.
+                    Verilerin şifrelenmesini gerektirecek bir sunucu altyapısı kullanmaz çünkü veriler hiçbir yere
+                    gönderilmez.
                 </p>
             </div>
 
             <div class="policy-section">
                 <h2> Üçüncü Taraf Paylaşımı</h2>
-                <p>Uygulama, üçüncü taraf yazılım kitaplıkları veya SDK'lar üzerinden herhangi bir veri toplamaz. 
-                    Analitik, reklam, sosyal medya bağlantısı gibi dış kaynaklarla hiçbir entegrasyon bulunmamaktadır.</p>
+                <p>Uygulama, üçüncü taraf yazılım kitaplıkları veya SDK'lar üzerinden herhangi bir veri toplamaz.
+                    Analitik, reklam, sosyal medya bağlantısı gibi dış kaynaklarla hiçbir entegrasyon bulunmamaktadır.
+                </p>
             </div>
 
             <div class="policy-section">
                 <h2>Çocukların Gizliliği</h2>
                 <p>
-                    Coreline uygulaması, genel kullanıcı kitlesine yönelik olup, 13 yaş altı çocuklara özel olarak tasarlanmamıştır. 
-                    Ancak uygulama içinde kullanıcıdan yaş bilgisi alınsa da bu bilgi dışa aktarılmadığı ve cihaz dışına çıkmadığı için çocukların gizliliği de güvence altındadır.
+                    Wordy English uygulaması, genel kullanıcı kitlesine yönelik olup, 13 yaş altı çocuklara özel olarak
+                    tasarlanmamıştır.
                 </p>
             </div>
             <div class="policy-section">
                 <h2> Politika Güncellemeleri</h2>
                 <p>
-                    Bu gizlilik politikasını zaman zaman güncelleyebiliriz. 
-                    Önemli değişiklikler durumunda kullanıcılarımızı uygulama içi bildirim 
+                    Bu gizlilik politikasını zaman zaman güncelleyebiliriz.
+                    Önemli değişiklikler durumunda kullanıcılarımızı uygulama içi bildirim
                     veya e-posta yoluyla bilgilendiririz.
                 </p>
             </div>
@@ -474,7 +503,7 @@ Verilerin şifrelenmesini gerektirecek bir sunucu altyapısı kullanmaz çünkü
                     Gizlilik politikamız hakkında sorularınız varsa bizimle iletişime geçebilirsiniz:
                 </p>
                 <p>
-                    <strong>E-posta:</strong> 
+                    <strong>E-posta:</strong>
                     <a href="mailto:caparstudio@gmail.com">caparstudio@gmail.com</a>
                 </p>
             </div>
@@ -486,7 +515,7 @@ Verilerin şifrelenmesini gerektirecek bir sunucu altyapısı kullanmaz çünkü
     </main>
 
     <footer>
-       <p>&copy; <span id="year"></span> Capar Studio. Tüm hakları saklıdır.</p>
+        <p>&copy; <span id="year"></span> Capar Studio. Tüm hakları saklıdır.</p>
     </footer>
 
     <script>
@@ -557,4 +586,5 @@ Verilerin şifrelenmesini gerektirecek bir sunucu altyapısı kullanmaz çünkü
         document.body.style.opacity = '0';
     </script>
 </body>
+
 </html>
