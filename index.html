@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,12 +52,15 @@
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.6;
             }
+
             90% {
                 opacity: 0.6;
             }
+
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
@@ -70,7 +74,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -79,8 +83,15 @@
         }
 
         @keyframes grid-pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
         }
 
         /* Header */
@@ -178,8 +189,17 @@
         }
 
         @keyframes pulse-glow {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.8;
+            }
         }
 
         .hero-content {
@@ -215,7 +235,8 @@
             animation: slideInUp 1s ease-out 0.6s backwards;
         }
 
-        .cta-primary, .cta-secondary {
+        .cta-primary,
+        .cta-secondary {
             padding: 1.2rem 2.5rem;
             border-radius: 50px;
             font-weight: 700;
@@ -237,7 +258,8 @@
             border: 2px solid #00ff88;
         }
 
-        .cta-primary:hover, .cta-secondary:hover {
+        .cta-primary:hover,
+        .cta-secondary:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
         }
@@ -251,6 +273,7 @@
                 opacity: 0;
                 transform: translateY(60px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -539,6 +562,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="particles"></div>
     <div class="grid-overlay"></div>
@@ -571,8 +595,8 @@
             <div class="about-content">
                 <h2 class="section-title">Hakkımızda</h2>
                 <p class="about-text">
-                    Capar Studio, yenilikçi mobil uygulamalar ve oyunlar geliştiren dinamik bir teknoloji şirketidir. 
-                    Kullanıcı deneyimini ön planda tutarak, hem eğlenceli hem de işlevsel uygulamalar yaratıyoruz. 
+                    Capar Studio, yenilikçi mobil uygulamalar ve oyunlar geliştiren dinamik bir teknoloji şirketidir.
+                    Kullanıcı deneyimini ön planda tutarak, hem eğlenceli hem de işlevsel uygulamalar yaratıyoruz.
                     Oyun sektöründen fitness dünyasına kadar geniş bir yelpazede projeler geliştiriyoruz.
                 </p>
             </div>
@@ -583,11 +607,30 @@
             <div class="apps-grid">
                 <div class="app-card reveal">
                     <div class="app-image">
+                        <img src="image/wordy.jpeg" alt="Wordy English Uygulaması">
+                    </div>
+                    <h3 class="app-title">📚 Wordy English</h3>
+                    <p class="app-description">
+                        İngilizce kelime dağarcığınızı eğlenceli ve interaktif bir şekilde geliştirin.
+                        Günlük kelime pratikleri ve oyunlarla dil öğrenmeyi bir alışkanlık haline getirin.
+                    </p>
+                    <ul class="app-features">
+                        <li>Kişiselleştirilmiş kelime setleri</li>
+                        <li>Sesli telaffuz ve pratik</li>
+                        <li>Eğlenceli mini oyunlar</li>
+                        <li>Gelişmiş istatistik takibi</li>
+                        <li>Offline çalışma desteği</li>
+                        <li>Günlük hatırlatıcılar</li>
+                    </ul>
+                    <button class="app-button" onclick="window.location.href='wordy-english.html'">İncele</button>
+                </div>
+                <div class="app-card reveal">
+                    <div class="app-image">
                         <img src="image/CoreLineTR.jpg" alt="Fitness & Egzersiz Uygulaması">
                     </div>
                     <h3 class="app-title">🏋️ Coreline</h3>
                     <p class="app-description">
-                        Kişiselleştirilmiş fitness deneyimi sunan kapsamlı sağlık uygulaması. 
+                        Kişiselleştirilmiş fitness deneyimi sunan kapsamlı sağlık uygulaması.
                         Vücut bilgilerinize göre özel programlar oluşturun ve hedeflerinize ulaşın.
                     </p>
                     <ul class="app-features">
@@ -598,7 +641,8 @@
                         <li>Beslenme önerileri</li>
                         <li>Motivasyon bildirimleri</li>
                     </ul>
-                    <button class="app-button" onclick="window.location.href='https://play.google.com/store/apps/details?id=com.fitnessapp.app'">Yayında</button>
+                    <button class="app-button"
+                        onclick="window.location.href='https://play.google.com/store/apps/details?id=com.fitnessapp.app'">Yayında</button>
                 </div>
 
                 <div class="app-card reveal">
@@ -607,8 +651,8 @@
                     </div>
                     <h3 class="app-title">🎮 Bounce Climb</h3>
                     <p class="app-description">
-                        Karşılıklı duvarlara zıplayarak yukarıdan gelen engellere değmeden 
-                        sonsuz bir yolculuk yapın. Arcade tarzı bu heyecan verici oyunda 
+                        Karşılıklı duvarlara zıplayarak yukarıdan gelen engellere değmeden
+                        sonsuz bir yolculuk yapın. Arcade tarzı bu heyecan verici oyunda
                         en yüksek skoru yakalamaya çalışın!
                     </p>
                     <ul class="app-features">
@@ -619,8 +663,11 @@
                         <li>Minimalist tasarım</li>
                         <li>Bağımlılık yaratan oynanış</li>
                     </ul>
-                    <button class="app-button coming-soon" onclick="window.location.href='https://play.google.com/store/apps/details?id=com.anonymous.BounceClimb'">Yayında</button>
+                    <button class="app-button"
+                        onclick="window.location.href='https://play.google.com/store/apps/details?id=com.anonymous.BounceClimb'">Yayında</button>
                 </div>
+
+
             </div>
         </section>
 
@@ -637,7 +684,8 @@
                     <h3>Instagram</h3>
                     <p>@caparstudio</p>
                 </a>
-                <a href="https://play.google.com/store/apps/dev?id=7247244813582334807" target="_blank" class="contact-card">
+                <a href="https://play.google.com/store/apps/dev?id=7247244813582334807" target="_blank"
+                    class="contact-card">
                     <div class="contact-icon">🌐</div>
                     <h3>Play Store</h3>
                     <p>Uygulamalarımız</p>
@@ -728,7 +776,7 @@
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-15px) scale(1.02)';
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0) scale(1)';
             });
@@ -738,4 +786,5 @@
         document.body.style.opacity = '0';
     </script>
 </body>
+
 </html>
