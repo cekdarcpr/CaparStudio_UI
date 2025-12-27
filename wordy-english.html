@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capar Studio</title>
+    <link rel="icon" href="image/csStudio.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, #111111 0%, #000000 100%);
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: linear-gradient(45deg, #00ff88, #00d4ff, #9c27b0, #ff3366);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Neon Grid Background */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: grid-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes grid-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00ff88, #00d4ff, #9c27b0, #ff3366);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00ff88, transparent);
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 90px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: -2px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            animation: slideInUp 1s ease-out 0.3s backwards;
+        }
+        
+        .store-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s backwards;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            background: rgba(0, 255, 136, 0.05);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .store-icon {
+            font-size: 2rem;
+        }
+
+        .store-info {
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .store-info small {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .store-info span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Screenshots Section - EN ÜSTTE */
+        .screenshots-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.02), rgba(0, 212, 255, 0.02));
+            border-radius: 30px;
+            margin: 0 auto 4rem;
+            max-width: 1400px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        .screenshots-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            justify-items: center;
+        }
+
+        .screenshot-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            perspective: 1000px;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/19;
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(0, 255, 136, 0.1),
+                inset 0 0 0 2px rgba(0, 255, 136, 0.05);
+            transition: all 0.5s ease;
+        }
+
+        .screenshot-wrapper:hover .phone-mockup {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 
+                0 40px 80px rgba(0, 255, 136, 0.3),
+                0 0 0 1px rgba(0, 255, 136, 0.3);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #0a0a0a;
+            border-radius: 0 0 20px 20px;
+            z-index: 2;
+        }
+
+        .screenshot-content {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse-scale 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-scale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .placeholder-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .placeholder-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .screenshot-label {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00ff88;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Popup Modal */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 500px;
+            text-align: center;
+            animation: slideInScale 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes slideInScale {
+            from {
+                transform: scale(0.8) translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: bounce-icon 2s ease-in-out infinite;
+        }
+
+        .popup-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .popup-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .popup-close {
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #000;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .screenshots-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .store-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .screenshot-wrapper {
+                max-width: 300px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #00d4ff, #9c27b0);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="particles"></div>
+    <div class="grid-overlay"></div>
+
+    <header>
+        <nav>
+            <div class="logo">Capar Studio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#apps">Uygulamalar</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-icon">📚</div>
+                <h1>Wordy - English</h1>
+                <p class="subtitle">İngilizce kelime dağarcığınızı geliştirin, her gün yeni kelimeler öğrenin!</p>
+                <div class="store-buttons">
+                    <a href="https://play.google.com/store" class="store-btn">
+                        <span class="store-icon">▶️</span>
+                        <div class="store-info">
+                            <small>Şimdi İndirin</small>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                    <button class="store-btn" onclick="showPopup()">
+                        <span class="store-icon">🍎</span>
+                        <div class="store-info">
+                            <small>Şimdi İndirin</small>
+                            <span>App Store</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screenshots" class="screenshots-section reveal">
+            <h2 class="section-title">Ekran Görüntüleri</h2>
+            <p class="section-subtitle">Uygulamadan görünümler</p>
+            <div class="screenshots-container">
+                <div class="screenshot-wrapper">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="screenshot-content">
+                            <div class="screenshot-placeholder">
+                                <div class="placeholder-icon">📖</div>
+                                <div class="placeholder-title">Ana Ekran</div>
+                                <div class="placeholder-desc">Günlük hedefleriniz ve öğrenme programınız</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screenshot-label">Kelime Kartları</div>
+                </div>
+
+                <div class="screenshot-wrapper">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="screenshot-content" style="background: linear-gradient(135deg, #9c27b0, #ff3366);">
+                            <div class="screenshot-placeholder">
+                                <div class="placeholder-icon">🎯</div>
+                                <div class="placeholder-title">Alıştırmalar</div>
+                                <div class="placeholder-desc">İnteraktif testler ve pratik egzersizleri</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screenshot-label">Pratik & Test</div>
+                </div>
+
+                <div class="screenshot-wrapper">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="screenshot-content" style="background: linear-gradient(135deg, #00d4ff, #00ff88);">
+                            <div class="screenshot-placeholder">
+                                <div class="placeholder-icon">📊</div>
+                                <div class="placeholder-title">İstatistikler</div>
+                                <div class="placeholder-desc">İlerlemenizi görselleştirin ve hedeflerinizi takip edin</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screenshot-label">İlerleme Raporu</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section reveal">
+            <h2 class="section-title">Özellikler</h2>
+            <p class="section-subtitle">WordMaster ile öğrenme deneyiminizi keşfedin</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Kişiselleştirilmiş Öğrenme</h3>
+                    <p>Seviyenize ve ilgi alanlarınıza göre özel kelime setleri ve alıştırmalar</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Sesli Telaffuz</h3>
+                    <p>Her kelime için doğal telaffuz dinleyin ve konuşma pratiği yapın</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Eğlenceli Oyunlar</h3>
+                    <p>Öğrenirken eğlenin! Mini oyunlarla kelime dağarcığınızı pekiştirin</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>İlerleme Takibi</h3>
+                    <p>Detaylı istatistiklerle öğrenme yolculuğunuzu takip edin</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Günlük Hatırlatmalar</h3>
+                    <p>Düzenli pratik için akıllı hatırlatma sistemi</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Çevrimdışı Mod</h3>
+                    <p>İnternet bağlantısı olmadan da öğrenmeye devam edin</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Capar Studio. Tüm hakları saklıdır.</p>
+    </footer>
+      <!-- Popup Modal -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+            <div class="popup-icon">🍎</div>
+            <h2>Çok Yakında!</h2>
+            <p>Wordy - English iOS versiyonu üzerinde çalışıyoruz. App Store'da yakında sizlerle buluşacağız!</p>
+            <button class="popup-close" onclick="closePopup()">Tamam</button>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Popup functions
+        function showPopup() {
+            document.getElementById('popup').classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+                header.style.borderBottom = '1px solid rgba(0, 255, 136, 0.3)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.borderBottom = '1px solid rgba(0, 255, 136, 0.1)';
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dynamic grid animation
+        setInterval(() => {
+            const grid = document.querySelector('.grid-overlay');
+            grid.style.transform = `translate(${Math.sin(Date.now() * 0.001) * 2}px, ${Math.cos(Date.now() * 0.001) * 2}px)`;
+        }, 50);
+
+        // Initialize
+        createParticles();
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease';
+        });
+
+        // Initialize with fade in
+        document.body.style.opacity = '0';
+    </script>
+</body>
+</html>
