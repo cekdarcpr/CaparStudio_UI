@@ -369,8 +369,7 @@
         <nav>
             <div class="logo">Capar Studio</div>
             <ul class="nav-links">
-                <li><a href="#home">Ana Sayfa</a></li>
-                <li><a href="#screenshots">Ekranlar</a></li>
+                <li ><a href="index.html">Ana Sayfa</a></li>
             </ul>
         </nav>
     </header>
@@ -379,13 +378,13 @@
         <section id="home" class="hero">
             <div class="hero-content">
                 <div class="hero-icon">
-                    <img src="image/LearnEnglishLogo-removebg-preview.png" alt="Wordy Logo">
+                    <img src="image/bounceLogo.jpg" alt="etkiyo Logo">
                 </div>
-                <h1>Wordy - English</h1>
-                <p class="subtitle">Kelime dağarcığınızı geliştirin, her gün yeni kelimeler öğrenin!</p>
+                <h1>Bounce Climb</h1>
+                <p class="subtitle">Endless Wall Jumping Action</p>
 
                 <div class="store-buttons">
-                    <a href="https://play.google.com/store/apps/details?id=com.capar_studio.learn_english" class="store-btn">
+                    <a href="https://play.google.com/store/apps/details?id=com.anonymous.BounceClimb" class="store-btn">
                         <div class="store-icon">
                             <svg viewBox="0 0 512 512" fill="currentColor">
                                 <path
@@ -394,12 +393,12 @@
                             </svg>
                         </div>
                         <div class="store-info">
-                            <small>İndir</small>
+                            <small>Get it on</small>
                             <span>Google Play</span>
                         </div>
                     </a>
 
-                   <a href="https://apps.apple.com/us/app/wordy-english/id6758516420" class="store-btn" style="cursor: pointer;">
+                   <a href="https://apps.apple.com/us/app/bounce-climb/id6758908603" class="store-btn">
                         <div class="store-icon">
                             <svg viewBox="0 0 384 512" fill="currentColor">
                                 <path
@@ -408,36 +407,11 @@
                             </svg>
                         </div>
                         <div class="store-info">
-                            <small>İndir</small>
+                            <small>Download on</small>
                             <span>App Store</span>
                         </div>
                     </a>
                 </div>
-            </div>
-        </section>
-        <section id="features" class="features-section reveal">
-            <h2 style="text-align:center; color:#00ff88; margin-bottom:2.5rem;">Neden Wordy?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>🎯 Akıllı Öğrenme</h3>
-                    <p>Yapay zeka destekli algoritma ile unutmaya başladığınız kelimeleri hatırlatır.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🔊 Doğru Telaffuz</h3>
-                    <p>Tüm kelimeleri ana dili İngilizce olan kişilerden dinleyerek öğrenin.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📊 Gelişim Takibi</h3>
-                    <p>Günlük istatistiklerinizle ne kadar yol kat ettiğinizi anlık olarak görün.</p>
-                </div>
-            </div>
-        </section>
-        <section id="screenshots" class="screenshots-section reveal">
-            <h2 style="text-align:center; margin-bottom:2rem; color:#00ff88;">Uygulamadan Kareler</h2>
-            <div class="screenshots-container">
-                <div class="phone-mockup"><img src="image/e1.png" alt="Ekran 1"></div>
-                <div class="phone-mockup"><img src="image/e.png" alt="Ekran 2"></div>
-                <div class="phone-mockup"><img src="image/e2.png" alt="Ekran 3"></div>
             </div>
         </section>
     </main>
@@ -445,14 +419,6 @@
     <footer>
         <p>&copy; 2026 Capar Studio. Tüm hakları saklıdır.</p>
     </footer>
-
-    <div class="popup-overlay" id="popup">
-        <div class="popup-content">
-            <h2 style="color:#00ff88; margin-bottom:1rem;">Çok Yakında!</h2>
-            <p>Wordy iOS versiyonu şu an test aşamasında. Çok yakında App Store'da!</p>
-            <button class="popup-close" onclick="closePopup()">Kapat</button>
-        </div>
-    </div>
 
     <script>
         // Parçacık oluşturucu
@@ -467,9 +433,6 @@
                 container.appendChild(p);
             }
         }
-
-        function showPopup() { document.getElementById('popup').classList.add('active'); }
-        function closePopup() { document.getElementById('popup').classList.remove('active'); }
 
         // Görünürlük kontrolü (Scroll reveal)
         const observer = new IntersectionObserver((entries) => {
